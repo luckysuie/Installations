@@ -1,5 +1,6 @@
-## Docker installation and configuration and adding Jenkins user to Docker group
+## Jenkins-Docker Integration Setup
 ------------------
+- Note: Jenkins should be installed first for this
 ```bash
 sudo apt update -y
 wget -O docker.sh https://get.docker.com/
