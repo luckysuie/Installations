@@ -1,6 +1,6 @@
-# Jenkins installation and verification
+## Jenkins installation and verification
 ------------------
-
+```bash
 sudo apt update
 sudo apt install openjdk-21-jdk -y # Jenkins needs Java to run
 sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \n  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
@@ -9,3 +9,4 @@ sudo apt update
 sudo apt install jenkins -y
 sudo systemctl start jenkins
 sudo systemctl status jenkins
+```
