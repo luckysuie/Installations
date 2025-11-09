@@ -38,17 +38,17 @@ ls
 unzip sonarqube-25.5.0.107428.zip
 ls
 mv sonarqube-25.5.0.107428 sonarqube
-sudo nano /etc
-ls -a
-cd .
-ls
 cd /etc
 ls
 sudo vi sysctl.conf
+```
 Inside sysctl.conf add:
+```bash
 vm.max_map_count=262144
-Then save and exit.
-Continue:
+```
+- Then save and exit.
+  - Continue:
+```bash
 cd /opt
 ls
 cd sonarqube/
@@ -56,11 +56,17 @@ ls
 cd conf/
 ls
 sudo vi sonar.properties
-Inside sonar.properties set:
+```
+- Inside sonar.properties set:
+```bash
 sonar.search.javaOpts=-Xms512m -Xmx1g
-Save and exit, then reboot to apply the kernel change.
+```
+- Save and exit, then reboot to apply the kernel change.
+```bash
 sudo reboot
-After reboot:
+```
+- After reboot:
+```bash
 su - sonar
 cd /opt
 ls
@@ -72,9 +78,11 @@ cd linux-x86-64/
 ls
 sh sonar.sh
 sh sonar.sh start
+```
+- Browse http://<your-server-ip>:9000
+```bash 
 ls
-sh sonar.sh stop
-history
+sh sonar.sh stop # it will stopsonarqube
 ```
 - At this point SonarQube runs but has no external database configured.
 ________________________________________
@@ -90,7 +98,7 @@ sudo systemctl enable postgresql
 createuser sonar
 psql
 ```
-- Inside the psql prompt:
+- Inside the psql prompt(Execute one after another):
 ```bash
 ALTER USER sonar WITH ENCRYPTED password 'sonar';
 CREATE DATABASE sonarqube OWNER sonar;
@@ -128,8 +136,7 @@ ls
 cd linux-x86-64/
 ls
 sh sonar.sh start
-history
-________________________________________
+```
 - Verification
   - Browse http://<your-server-ip>:9000
   - Default login:
@@ -137,4 +144,4 @@ ________________________________________
   - Password: admin
 - You’ll be prompted to change it on first login.
 ________________________________________
-SonarQube 25.5 with PostgreSQL integration is now fully configured and running on your Ubuntu VM with port 9000 open and persistent database storage.
+- SonarQube 25.5 with PostgreSQL integration is now fully configured and running on your Ubuntu VM with port 9000 open and persistent database storage.
