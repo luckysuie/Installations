@@ -86,8 +86,8 @@ sh sonar.sh stop # it will stopsonarqube
 ```
 - At this point SonarQube runs but has no external database configured.
 ________________________________________
-PostgreSQL Installation and Setup as postgres@lucky
-After logging into postgres user you need to perform below means for logging into that
+- PostgreSQL Installation and Setup as postgres@lucky
+- After logging into postgres user you need to perform below means for logging into that
 ```bash
 su - postgres
 sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
@@ -120,13 +120,17 @@ ls
 cd conf/
 ls
 sudo vi sonar.properties
+```
 Inside sonar.properties add or modify:
+```bash
 sonar.jdbc.username=sonar
 sonar.jdbc.password=sonar
 sonar.jdbc.url=jdbc:postgresql://localhost/sonarqube
 sonar.search.javaOpts=-Xmx512m -Xms512m -XX:MaxDirectMemorySize=256m -XX:+HeapDumpOnOutOfMemoryError
+```
 Save and exit.
 Continue:
+```bash
 cd
 cd /opt/
 ls
