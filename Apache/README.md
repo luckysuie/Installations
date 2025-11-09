@@ -1,4 +1,4 @@
-# Apache HTTP server installation and verification
+## Apache HTTP server installation and verification
 ------------------
 ```bash
 sudo apt update
