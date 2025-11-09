@@ -1,7 +1,40 @@
 
 ## SONARQUBE CONFIGURATION WITH POSTGRES DATABASE NEAR TO REAL TIME
 
-- VM and Network Preparation
+### Little learning 
+1. What is /opt and /etc in Linux?
+<p>/opt — “Optional software”
+It stands for optional and is used to install third-party or custom software.
+Unlike /usr/bin (which is for system packages installed via apt), /opt is usually used for manual installations — like SonarQube, Jenkins, or IntelliJ. </p>
+
+<p>/etc — “Editable Text Configuration”
+/etc holds configuration files for almost all software and services.
+- Example analogy:
+/etc = your system’s “Settings” folder — where you change how things run.</p>
+
+
+2. What is Elasticsearch (and why is it important in SonarQube)?
+- (ES) is a search and analytics engine.
+- It indexes and queries large volumes of data very fast.
+- How SonarQube uses it:
+  - When SonarQube scans code, it stores results (issues, metrics, code smells, bugs) in a database.
+  <p>But for searching, filtering, and analytics, it uses Elasticsearch because it’s optimized for:</p>
+    
+    - Full-text search
+    - Fast filtering (e.g., “show all issues of severity = Critical in project X”)
+    - Aggregations (metrics, charts)
+
+3. Why PostgreSQL Database is needed (and what it does)
+<p>Initially, SonarQube comes with an embedded H2 database — which is temporary and not reliable for real deployments.
+You replaced it with PostgreSQL, which is a production-grade relational database.</p>
+
+- What it stores:
+  - Projects, issues, metrics, scan history
+  - User accounts, roles, permissions
+  - Plugin configurations and analysis results
+  - Background tasks and processing queues
+
+## VM and Network Preparation
   - Create an Ubuntu 22.04 or 24.04 VM with at least 8 GB RAM and 2 vCPUs.
   - Open TCP port 9000 in your cloud firewall or security group.
 ________________________________________
@@ -16,6 +49,8 @@ sudo useradd -m -s /bin/bash sonar -g sonar
 sudo useradd -m -s /bin/bash postgres -g postgres
 sudo passwd sonar
 sudo passwd postgres
+sudo apt install unzip
+sudo chmod 777 /opt
 ```
 ```bash
 sudo visudo
@@ -32,12 +67,12 @@ ________________________________________
 ```bash
 su - sonar
 cd /opt
-sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-25.5.0.107428.zip
-sudo apt install unzip
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-25.5.0.107428.zip
 ls
 unzip sonarqube-25.5.0.107428.zip
 ls
 mv sonarqube-25.5.0.107428 sonarqube
+cd
 cd /etc
 ls
 sudo vi sysctl.conf
@@ -49,6 +84,7 @@ vm.max_map_count=262144
 - Then save and exit.
   - Continue:
 ```bash
+cd  
 cd /opt
 ls
 cd sonarqube/
@@ -76,7 +112,6 @@ cd bin/
 ls
 cd linux-x86-64/
 ls
-sh sonar.sh
 sh sonar.sh start
 ```
 - Browse http://yourpublicip:9000
@@ -149,3 +184,7 @@ sh sonar.sh start
 - You’ll be prompted to change it on first login.
 ________________________________________
 - SonarQube 25.5 with PostgreSQL integration is now fully configured and running on your Ubuntu VM with port 9000 open and persistent database storage.
+
+
+<img width="1894" height="868" alt="image" src="https://github.com/user-attachments/assets/438359f2-decc-448c-8dfc-f7c67aa508df" />
+
