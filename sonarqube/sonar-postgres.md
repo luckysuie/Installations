@@ -5,8 +5,8 @@
   - Create an Ubuntu 22.04 or 24.04 VM with at least 8 GB RAM and 2 vCPUs.
   - Open TCP port 9000 in your cloud firewall or security group.
 ________________________________________
-Base Configuration as LakshmiNarayana@lucky
-After logging into your VM do below
+- Base Configuration as LakshmiNarayana@lucky
+- After logging into your VM do below. Execute one after another
 ```bash
 sudo apt update
 sudo groupadd sonar
@@ -27,8 +27,8 @@ sonar   ALL=(ALL:ALL) ALL
 postgres ALL=(ALL:ALL) ALL
 ```
 ________________________________________
-SonarQube Installation as sonar@lucky
-In the sonar user you need to perform below activity
+- SonarQube Installation as sonar@lucky
+- In the sonar user you need to perform below activity. Execute one after another
 ```bash
 su - sonar
 cd /opt
