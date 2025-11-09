@@ -16,21 +16,21 @@ sudo useradd -m -s /bin/bash sonar -g sonar
 sudo useradd -m -s /bin/bash postgres -g postgres
 sudo passwd sonar
 sudo passwd postgres
-ls -a
+```
+```bash
 sudo visudo
-In the editor add these lines, then save and exit:
+```
+- In the editor add these lines, then save and exit:
+```bash
 root    ALL=(ALL:ALL) ALL
 sonar   ALL=(ALL:ALL) ALL
 postgres ALL=(ALL:ALL) ALL
-Continue:
-su - sonar
-sudo apt update
-su - sonar
-history
 ```
 ________________________________________
 SonarQube Installation as sonar@lucky
 In the sonar user you need to perform below activity
+```bash
+su - sonar
 cd /opt
 wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-25.5.0.107428.zip
 sudo apt install unzip
@@ -75,6 +75,7 @@ sh sonar.sh start
 ls
 sh sonar.sh stop
 history
+```
 At this point SonarQube runs but has no external database configured.
 ________________________________________
 PostgreSQL Installation and Setup as postgres@lucky
