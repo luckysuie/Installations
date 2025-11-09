@@ -1,4 +1,4 @@
-# Docker installation and configuration and adding Jenkins user to Docker group
+## Docker installation and configuration and adding Jenkins user to Docker group
 ------------------
 ```bash
 sudo apt update -y
