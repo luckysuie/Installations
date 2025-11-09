@@ -76,11 +76,12 @@ ls
 sh sonar.sh stop
 history
 ```
-At this point SonarQube runs but has no external database configured.
+- At this point SonarQube runs but has no external database configured.
 ________________________________________
 PostgreSQL Installation and Setup as postgres@lucky
 After logging into postgres user you need to perform below means for logging into that
-   su - postgres
+```bash
+su - postgres
 sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
 wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | sudo apt-key add -
 sudo apt install postgresql postgresql-contrib -y
@@ -88,18 +89,21 @@ sudo systemctl start postgresql
 sudo systemctl enable postgresql
 createuser sonar
 psql
-Inside the psql prompt:
+```
+- Inside the psql prompt:
+```bash
 ALTER USER sonar WITH ENCRYPTED password 'sonar';
 CREATE DATABASE sonarqube OWNER sonar;
 GRANT ALL PRIVILEGES ON DATABASE sonarqube TO sonar;
 \q 	#exits the psql
+```
 Continue:
-ls
-ls -a
+```bash
 exit
-history
-________________________________________
-Connect SonarQube to PostgreSQL as sonar@lucky
+```
+
+- Connect SonarQube to PostgreSQL as sonar@lucky
+```bash
 su - sonar
 cd /opt/
 ls
@@ -126,12 +130,11 @@ ls
 sh sonar.sh start
 history
 ________________________________________
-Verification
-Open a browser to
-http://<your-server-ip>:9000
-Default login:
-Username: admin
-Password: admin
-You’ll be prompted to change it on first login.
+- Verification
+  - Browse http://<your-server-ip>:9000
+  - Default login:
+  - Username: admin
+  - Password: admin
+- You’ll be prompted to change it on first login.
 ________________________________________
 SonarQube 25.5 with PostgreSQL integration is now fully configured and running on your Ubuntu VM with port 9000 open and persistent database storage.
