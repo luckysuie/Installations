@@ -79,7 +79,7 @@ ls
 sh sonar.sh
 sh sonar.sh start
 ```
-- Browse http://<your-server-ip>:9000
+- Browse http://yourpublicip:9000
 ```bash 
 ls
 sh sonar.sh stop # it will stopsonarqube
@@ -105,7 +105,7 @@ CREATE DATABASE sonarqube OWNER sonar;
 GRANT ALL PRIVILEGES ON DATABASE sonarqube TO sonar;
 \q 	#exits the psql
 ```
-Continue:
+- Continue:
 ```bash
 exit
 ```
@@ -138,7 +138,7 @@ ls
 sh sonar.sh start
 ```
 - Verification
-  - Browse http://<your-server-ip>:9000
+  - Browse http://yourpublicip:9000
   - Default login:
   - Username: admin
   - Password: admin
