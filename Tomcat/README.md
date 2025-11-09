@@ -11,11 +11,22 @@ cd tomcat
 cd bin
 ./startup.sh # to start tomcat server
 ./shutdown.sh # to stop tomcat server
+```
 
+```bash
 vi ~/tomcat/webapps/manager/META-INF/context.xml
+```
+
+```bash
 <Valve className=\"org.apache.catalina.valves.RemoteCIDRValve\"
         allow=\"127.0.0.0/8,::1/128\" /> # remove this section to allow access from all IPs
+```
+
+```bash
 vi ~/tomcat/conf/tomcat-users.xml
+```
+
+```bash
     <role rolename=\"manager-gui\"/>
     <role rolename=\"manager-script\"/>
     <role rolename=\"manager-status\"/>
