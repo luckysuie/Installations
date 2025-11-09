@@ -32,7 +32,7 @@ ________________________________________
 ```bash
 su - sonar
 cd /opt
-wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-25.5.0.107428.zip
+sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-25.5.0.107428.zip
 sudo apt install unzip
 ls
 unzip sonarqube-25.5.0.107428.zip
