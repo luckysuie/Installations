@@ -44,4 +44,19 @@ sudo systemctl enable prometheus
 - Browse the public ip of VM with 9090 port Ex: http://VM-IP:9090
 
 
+## Grafana Installation Script from Grafana (Official APT Repo)
+```bash
+sudo apt-get update -y && \
+sudo apt-get install -y software-properties-common apt-transport-https wget && \
+sudo add-apt-repository -y "deb https://packages.grafana.com/oss/deb stable main" && \
+wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add - && \
+sudo apt-get update -y && \
+sudo apt-get install -y grafana && \
+sudo systemctl enable grafana-server && \
+sudo systemctl start grafana-server
+```
+- Access Grafana: http://VM-IP:3000
+- Default login:
+  - username: admin
+  - password: admin
 
