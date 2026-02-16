@@ -9,7 +9,7 @@ sudo apt-get install -y dotnet-sdk-8.0
 dotnet --version
 ```
 
-## DOTNET & SDK and runtime Installation
+## DOTNET-7 & SDK and runtime Installation
 ```bash
 sudo apt udpate
 wget https://builds.dotnet.microsoft.com/dotnet/Sdk/7.0.410/dotnet-sdk-7.0.410-linux-x64.tar.gz 
