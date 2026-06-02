@@ -2,8 +2,8 @@
 ------------------
 ```bash
 sudo apt update
-wget https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz #change the URL if there is a new version
-tar -xvzf apache-maven-3.9.9-bin.tar.gz
+wget https://dlcdn.apache.org/maven/maven-3/3.9.16/binaries/apache-maven-3.9.16-bin.tar.gz #change the URL if there is a new version
+tar -xvzf apache-maven-3.9.16-bin.tar.gz
 ls
 mv apache-maven-3.9.9 maven
 cd maven
