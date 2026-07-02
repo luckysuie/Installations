@@ -1,26 +1,11 @@
 ## Docker Installation and rootless access setup
 
-- Install Docker (convenience script)
 ```bash
-sudo apt update -y
-wget -O docker.sh https://get.docker.com/
-sudo sh docker.sh
-```
-
-- Ensure 'docker' group exists, then add your user
-```bash
-sudo groupadd -f docker
-sudo usermod -aG docker "$USER"
-```
-
-- Restart Docker
-```
+sudo apt-get update
+wget -qO- https://get.docker.com/ | sh ### Install Docker using the convenience script provided by Docker
+sudo groupadd -f docker ## Create the docker group if it doesn't exist
+sudo usermod -aG docker $USER ## Add the current user to the docker group
 sudo systemctl restart docker
 newgrp docker
-```
-
-- Verify (no sudo)
-```bash
-docker --version
-docker ps
+docker --version  ## Verify that Docker is installed and running
 ```
